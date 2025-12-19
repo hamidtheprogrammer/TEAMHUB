@@ -49,4 +49,7 @@ port=
 ## Tests
 (Not yet implemented)
 
-
+## Documentation index
+- Product requirement -> /app/docs/product-requirements.md
+- System architecture -> /app/docs/system-architecture.md
+- Extended Entity Relational Database -> /app/docs/EERD.md
