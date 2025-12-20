@@ -52,4 +52,6 @@ port=
 ## Documentation index
 - Product requirement -> [app/docs/product-requirements.md](app/docs/product-requirements.md)
 - System architecture -> [app/docs/system-architecture.md](app/docs/system-architecture.md)
+- API documentation -> [app/docs/api](app/docs/api)
 - Extended Entity Relational Database -> [app/docs/EERD.md](app/docs/EERD.md)
+- Sequence diagrams -> [app/docs/sequence-diagrams](app/docs/sequence-diagrams)

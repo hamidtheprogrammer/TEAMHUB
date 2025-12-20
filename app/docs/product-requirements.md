@@ -2,6 +2,7 @@
 
 ## Product Requirement.
 TeamHub is a backend-only internal SaaS that centralizes team, project, and user management for an organization, providing secure access control, administrative oversight, and basic lifecycle communication via email
+
 ## Functional Requirements:
 ### Authentication
 -	User registration, login, password reset.

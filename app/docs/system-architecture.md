@@ -1,4 +1,4 @@
 # System design and Architecture
 ## Layered architecture design
 
-![Layered architecture image](image.png)
+![Layered architecture image](images/image.png)
