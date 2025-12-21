@@ -3,8 +3,6 @@ from config.settings import settings
 
 app = FastAPI()
 
-print(settings.port)
-
 
 @app.get("/")
 def home():
