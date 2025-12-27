@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import Table, Column, ForeignKey, Integer, String
 from config.dbConfig import Base
+from models.projects import Project
 
 team_membership = Table(
     "team_membership",
@@ -16,12 +17,12 @@ class Team(Base):
     name:Mapped[str] = mapped_column(String, nullable=False)
 
     projects:Mapped[list["Project"]] = relationship(
-        back_populates="teams",
+        back_populates="team",
         cascade="all, delete"
     )
 
-    users: Mapped[list["Team"]] = relationship(
-        "Team",
+    users: Mapped[list["User"]] = relationship(
+        "User",
         secondary="team_membership",
         back_populates="teams"
     )

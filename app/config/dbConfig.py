@@ -1,10 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session, DeclarativeBase
 
-from settings import Settings
-
 #settings to access env 
-settings = Settings()
+from config.settings import settings
 
 # Create engine (Connection pool)
 engine = create_engine(

@@ -2,7 +2,8 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import String, Integer, Enum as SQLEnum, Boolean, DateTime
 from datetime import datetime, timedelta
 from enum import Enum
-from app.config.dbConfig import Base
+from config.dbConfig import Base
+from models.teams import team_membership
 
 #function to return one hour from current time
 def one_hour_from_now():
@@ -12,10 +13,10 @@ def one_hour_from_now():
 
 # user role class
 class UserRole(str, Enum):
-    ADMIN:"admin"
-    USER:"user"
+    ADMIN="admin"
+    USER="user"
 
-#user class
+# user class
 class User(Base):
     __tablename__ = "users"
 
@@ -26,9 +27,9 @@ class User(Base):
     role:Mapped[UserRole] = mapped_column(SQLEnum(UserRole) , nullable=False, default=UserRole.USER)
     verified:Mapped[bool] = mapped_column(Boolean, default=False)
     verifiedToken:Mapped[str] = mapped_column(String, nullable=False)
-    verifiedTokenExpiry:Mapped[datetime] = mapped_column(DateTime, default = lambda: one_hour_from_now)
-    passwordToken:Mapped[str] = mapped_column(String, nullable=False)
-    passwordTokenExpiry:Mapped[datetime] = mapped_column(DateTime, default = lambda: one_hour_from_now)
+    verifiedTokenExpiry:Mapped[datetime] = mapped_column(DateTime, default = one_hour_from_now)
+    passwordToken:Mapped[str] = mapped_column(String, nullable=True )
+    passwordTokenExpiry:Mapped[datetime] = mapped_column(DateTime, default = one_hour_from_now)
 
     teams: Mapped[list["Team"]] = relationship(
         "Team",
