@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import Table, Column, ForeignKey, Integer, String
-from config.dbConfig import Base
-from models.projects import Project
+from app.config.dbConfig import Base
+from app.models.projects import Project
 
 team_membership = Table(
     "team_membership",

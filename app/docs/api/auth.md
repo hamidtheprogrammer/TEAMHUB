@@ -1,4 +1,4 @@
-# 1 POST api/v1/register  V1
+# 1 POST auth/register  V1
 Creates a new account
 
 ## 1.1 Auth rules
@@ -24,7 +24,10 @@ Creates a new account
     "id":"uuid",
     "username":"string",
     "email":"string",
-    "createdAt":Date
+    "role":"admin"|"user",
+    "verified":bool,
+    "teams":[],
+    
 }
 ```
 
@@ -59,10 +62,12 @@ Creates a new account
 - Sends verification email (http://client-base-url/verify-account/{id}/{token})
 
 
-# 2 POST api/v1/verify-token/{token}  V1
+# 2 POST auth/verify-token/{token}  V1
 This endpoint is either used to reset password or verify account, if the tokenType is set to password and password is provided in the body, it will verify that the password token matches the above token in url and update password, however, if tokenType is verification, it will check that url token matches account verification token and verify acccount.
 
 NOTE: Password token is generated upon clicking reset password, an email containing a url with the token is sent from the server which provides a page to the user to create a new password, Once submitted, password is sent along side url token. However, account verification mail is sent upon registration, the link takes the user to a page which triggers account verification on the server.
+
+For this project, email sending is intentionally stubbed due to domain verification requirements.In development mode, verification tokens are returned in the API response for testing purposes. In production, this service would integrate with a transactional email provider
 
 ## 2.1 Auth rules
 - Auth: Not required
@@ -106,7 +111,7 @@ NOTE: Password token is generated upon clicking reset password, an email contain
 }
 ```
 
-# 3 POST api/v1/login V1
+# 3 POST auth/login V1
 
 ## 3.1 Auth rules
 - Auth: not required
@@ -128,7 +133,10 @@ NOTE: Password token is generated upon clicking reset password, an email contain
     "id":"uuid",
     "username":"string",
     "email":"string",
-    "createdAt":Date
+    "role":"admin"|"user",
+    "verified":bool,
+    "teams":[],
+    
 }
 ```
 
@@ -142,7 +150,7 @@ NOTE: Password token is generated upon clicking reset password, an email contain
 }
 ```
 
-# 4 POST api/v1/reset-password V1
+# 4 POST auth/reset-password V1
 Reset password
 
 ## 4.1 Auth rules

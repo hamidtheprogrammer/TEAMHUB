@@ -6,13 +6,13 @@
 ## Overview
 TeamHub is a minimal backend-only internal SaaS that centralizes team, project, and user management for an organization, providing secure access control, administrative oversight, and basic lifecycle communication via email. The app is built to practice agile software development life cycle workflows, testing, documentation, and devsecops pipelines.
 
+## Current Features
+- Authentication and authorization (In progress)
+- Email notification - For this project, email sending is intentionally stubbed due to domain verification requirements. In development mode, verification tokens are returned in the API response for testing purposes. In production, this service would integrate with a transactional email provider
+
 ## Planned features (Not yet implemented)
-- Authentication and authorization
 - Team and project management
 - Admin controls
-- Email notification
-- Background tasks
-- Cache
 
 ## Prerequisites
 - Postgresql 
@@ -21,7 +21,7 @@ TeamHub is a minimal backend-only internal SaaS that centralizes team, project, 
 ## Tech Stack
 - FastAPI, python, pydantic
 - Postgres
-- Docker, Github actions
+- Github actions
 
 ## Getting started
 

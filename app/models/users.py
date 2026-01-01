@@ -2,8 +2,8 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import String, Integer, Enum as SQLEnum, Boolean, DateTime
 from datetime import datetime, timedelta
 from enum import Enum
-from config.dbConfig import Base
-from models.teams import team_membership
+from app.config.dbConfig import Base
+from app.models.teams import team_membership
 
 #function to return one hour from current time
 def one_hour_from_now():

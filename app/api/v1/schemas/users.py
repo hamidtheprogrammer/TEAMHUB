@@ -1,7 +1,14 @@
 from pydantic import BaseModel, EmailStr
-from models.users import UserRole
+from app.models.users import UserRole
+from enum import Enum
+from typing import Optional
 
-# user creation schema
+# user role class
+class TokenType(str, Enum):
+    PASSWORD="password"
+    VERIFICATION="verification"
+
+# user creation schema (inbound)
 class UserCreate(BaseModel):
     username:str
     email: EmailStr
@@ -10,7 +17,7 @@ class UserCreate(BaseModel):
         "from_attributes": True
     }
 
-# user response schema
+# user response schema (outbound)
 class UserResponse(BaseModel):
     id:int
     username:str
@@ -21,3 +28,26 @@ class UserResponse(BaseModel):
     model_config = {
         "from_attributes": True
     }
+
+# user response schema in dev mode
+class UserResponseDev(UserResponse):
+        verifiedToken:str
+
+# user login schema
+class UserLogin(BaseModel):
+    email: EmailStr
+    password:str
+
+# user token schema
+class UserVerifyToken(BaseModel):
+    id:int
+    tokenType:TokenType
+    password:Optional[str] = None 
+
+# success message
+class SuccessMessage(BaseModel):
+     message:str
+
+# reset password request
+class ResetPassword(BaseModel):
+     email:EmailStr

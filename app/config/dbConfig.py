@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session, DeclarativeBase
 
 #settings to access env 
-from config.settings import settings
+from app.config.settings import settings
 
 # Create engine (Connection pool)
 engine = create_engine(
