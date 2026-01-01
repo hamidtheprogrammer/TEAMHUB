@@ -2,6 +2,9 @@
 ![Last Commit](https://img.shields.io/github/last-commit/hamidtheprogrammer/TEAMHUB)
 ![Status](https://img.shields.io/badge/status-work%20in%20progress-yellow)
 ![Version](https://img.shields.io/badge/version-0.1.0--alpha-orange)
+![Coverage](https://img.shields.io/codecov/c/github/hamidtheprogrammer/REPO)
+![Build](https://github.com/hamidtheprogrammer/REPO/actions/workflows/ci.yml/badge.svg)
+
 
 ## Overview
 TeamHub is a minimal backend-only internal SaaS that centralizes team, project, and user management for an organization, providing secure access control, administrative oversight, and basic lifecycle communication via email. The app is built to practice agile software development life cycle workflows, testing, documentation, and devsecops pipelines.

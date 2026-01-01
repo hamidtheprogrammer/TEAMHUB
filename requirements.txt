@@ -5,3 +5,5 @@ pydantic
 pytest
 httpx
 alembic
+pydantic_settings
+pytest-cov
