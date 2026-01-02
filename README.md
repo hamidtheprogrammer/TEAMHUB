@@ -68,7 +68,7 @@ pytest
 
 ## Folder structure
 
-````
+```
 ├─app/ # main folder
 │   ├─ api/ # routes / schemas
 │   ├─ config/ # database config / env settings
