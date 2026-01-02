@@ -26,6 +26,11 @@ def test_register_route_invalid_payload():
 
 # 1.2 Test registration with existing email
 def test_register_route_email_exists():
+    db = SessionLocal()
+    user = get_user_by_email(db, TEST_EXISTING_USER["email"])
+    if not user: 
+        TEST_EXISTING_USER["verifiedToken"] = "utycfregwhubuytvyfctehgv"
+        create_user(db, TEST_EXISTING_USER)
     response = client.post("/auth/register", json=TEST_EXISTING_USER)
     assert response.status_code in (400, 422)
 
