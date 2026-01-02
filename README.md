@@ -68,23 +68,23 @@ pytest
 
 ## Folder structure
 
-```
-app/ # main folder
-├─ api/ # routes / schemas
-├─ config/ # database config / env settings
-├─docs/ # documentation
-├─ models/ # database models
-├─ repositories/ # database querying
-├─ scripts/ # database seed
-├─ tests/ # integration tests
-├─ utils/ # password hash / JWT token generation
-├─ main.py # root file
-README.md # you are here
-alembic/ #  migration folder
-alembic.ini
-requirements.txt #  packages
-.env
-.gitignore
+````
+├─app/ # main folder
+│   ├─ api/ # routes / schemas
+│   ├─ config/ # database config / env settings
+│   ├─docs/  # ADRs, architecture diagrams, decisions
+│   ├─ models/ # database models
+│   ├─ repositories/ # database querying
+│   ├─ scripts/ # database seed
+│   ├─ tests/ # integration tests
+│   ├─ utils/ # password hash / JWT token generation
+│   ├─ main.py # root file
+├─README.md # you are here
+├─alembic/ #  migration folder
+├─alembic.ini
+├─requirements.txt #  packages
+├─.env
+├─.gitignore
 ```
 
 ## Documentation index

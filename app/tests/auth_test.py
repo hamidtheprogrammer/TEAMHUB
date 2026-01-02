@@ -3,6 +3,7 @@ from fastapi.testclient import TestClient
 from app.main import app
 from app.repositories.users import delete_user_by_email, create_user, get_user_by_email
 from app.config.dbConfig import SessionLocal
+from app.models.users import User
 
 # use app server
 client = TestClient(app)
@@ -14,7 +15,8 @@ TEST_DATA = {"username":"hamid","email":"hamid@gmail.com", "password":"hamid123"
 TEST_EXISTING_USER = {
     "username": "testuser",
     "email": "testuser@example.com",
-    "password": "strongpassword123"
+    "password": "strongpassword123",
+    "verifiedToken":"hfhfjuriuujehhehejdjdjdjd"
 }
 
 # 1 REGISTRATION
@@ -24,10 +26,20 @@ def test_register_route_invalid_payload():
     response = client.post("/auth/register", json={})
     assert response.status_code in (400, 422)
 
-# # 1.2 Test registration with existing email
-# def test_register_route_email_exists():
-#     response = client.post("/auth/register", json=TEST_EXISTING_USER)
-#     assert response.status_code in (400, 422)
+# 1.2 Test registration with existing email
+def test_register_route_email_exists():
+    db = SessionLocal()
+    user = get_user_by_email(db, TEST_EXISTING_USER["email"])
+    if not user:
+        user = User(
+        username=TEST_EXISTING_USER["username"],
+        email=TEST_EXISTING_USER["email"],
+        hashed_password=(TEST_EXISTING_USER["password"]),
+        verifiedToken= TEST_EXISTING_USER["verifiedToken"]
+        ) 
+        create_user(db, user)
+    response = client.post("/auth/register", json=TEST_EXISTING_USER)
+    assert response.status_code in (400, 422)
 
 # 1.3 Test registration with valid credentials
 def test_register_route_success():
@@ -69,11 +81,6 @@ def test_login_invalid_credentials():
 
 # 3.2 Valid login credentials
 def test_login_valid_credentials():
-    db = SessionLocal()
-    user = get_user_by_email(db, TEST_EXISTING_USER["email"])
-    if not user: 
-        TEST_EXISTING_USER["verifiedToken"] = "utycfregwhubuytvyfctehgv"
-        create_user(db, TEST_EXISTING_USER)
     response = client.post("/auth/login", json=TEST_EXISTING_USER)
     assert response.status_code == 200
 
@@ -94,6 +101,5 @@ def test_reset_password_invalid_credentials():
 # 4.2 reset password with invalid credentials
 def test_reset_password_valid_credentials():
     response = client.put("/auth/reset-password", json={"email":TEST_EXISTING_USER["email"]})
-    print(response.json())
 
     assert response.status_code == 200
