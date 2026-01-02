@@ -31,13 +31,36 @@ TeamHub is a minimal backend-only internal SaaS that centralizes team, project, 
 ### Environment variables
 port= (add your desired port number e.g 8000)
 DATABASE_URL=(add your postgresql url e.g "postgresql://username@localhost:5432/teamhub")
+MAILERSEND_API_KEY=(your mailer send api key - mail is not functional in this project)
+MAIL_FROM_EMAIL=
+MAIL_FROM_NAME=
+FRONTEND_VERIFY_URL=http://localhost:3000/auth/verify
+env="DEVELOPMENT"
 
 ### Clone and install
 ```bash
+# Clone the TEAMHUB repository from GitHub to your local machine
 git clone https://github.com/hamidtheprogrammer/TEAMHUB.git
+
+# Upgrade pip to the latest version to avoid any installation issues
+python -m pip install --upgrade pip
+
+# Install all Python dependencies listed in requirements.txt
+# This ensures your environment has FastAPI, SQLAlchemy, Alembic, etc.
+pip install -r requirements.txt
+
+# Apply database migrations using Alembic
+# This creates tables and updates schema to the latest version
+alembic upgrade head 
+
+# Start the FastAPI server with auto-reload enabled
+# --reload will automatically restart the server when code changes
+uvicorn app.main:app --reload 
+
+# Optionally run tests using the command below
 cd app
-pip3 install
-python3 main.py
+pytest
+
 ```
 
 
@@ -47,17 +70,20 @@ python3 main.py
 app/ # main folder
 ├─ api/ # routes / schemas
 ├─ config/ # database config / env settings
+├─docs/ # documentation
 ├─ models/ # database models
 ├─ repositories/ # database querying
 ├─ scripts/ # database seed
 ├─ tests/ # integration tests
 ├─ utils/ # password hash / JWT token generation
 ├─ main.py # root file
-└─ README.md # you are here
+README.md # you are here
+alembic/ #  migration folder
+alembic.ini
+requirements.txt #  packages
+.env
+.gitignore
 ```
-
-## Tests
-(Not yet implemented)
 
 ## Documentation index
 - Product requirement -> [app/docs/product-requirements.md](app/docs/product-requirements.md)
