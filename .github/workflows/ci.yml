@@ -29,7 +29,7 @@ jobs:
           --health-retries=5
 
     env:
-      DATABASE_URL: postgresql+psycopg://postgres:postgres@localhost:5432/teamhub_test
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/teamhub_test
       env: DEVELOPMENT
       MAILERSEND_API_KEY: mlsn.23485ff8bba779387b4e74e8d6ae972d9874ff5acddc3d89a56611ec8c327117
       MAIL_FROM_EMAIL: test@sandbox.mailersend.net
