@@ -2,22 +2,44 @@
 ![Last Commit](https://img.shields.io/github/last-commit/hamidtheprogrammer/TEAMHUB)
 ![Status](https://img.shields.io/badge/status-work%20in%20progress-yellow)
 ![Version](https://img.shields.io/badge/version-0.1.0--alpha-orange)
+![Coverage](https://img.shields.io/codecov/c/github/hamidtheprogrammer/REPO)
+![Build](https://github.com/hamidtheprogrammer/TEAMHUB/actions/workflows/ci.yml/badge.svg)
+
 
 ## Overview
 TeamHub is a minimal backend-only internal SaaS that centralizes team, project, and user management for an organization, providing secure access control, administrative oversight, and basic lifecycle communication via email. The app is built to practice agile software development life cycle workflows, testing, documentation, and devsecops pipelines.
 
+## Current Features
+- Authentication and authorization (In progress)
+- Email notification - For this project, email sending is intentionally stubbed due to domain verification requirements. In development mode, verification tokens are returned in the API response for testing purposes. In production, this service would integrate with a transactional email provider
+
 ## Planned features (Not yet implemented)
-- Authentication and authorization
 - Team and project management
 - Admin controls
-- Email notification
-- Background tasks
-- Cache
+
+## Prerequisites
+- Postgresql 
+- python 3.+
 
 ## Tech Stack
 - FastAPI, python, pydantic
-- Postgres, rabitmq
-- Docker, Github actions
+- Postgres
+- Github actions
+
+## Getting started
+
+### Environment variables
+port= (add your desired port number e.g 8000)
+DATABASE_URL=(add your postgresql url e.g "postgresql://username@localhost:5432/teamhub")
+
+### Clone and install
+```bash
+git clone https://github.com/hamidtheprogrammer/TEAMHUB.git
+cd app
+pip3 install
+python3 main.py
+```
+
 
 ## Folder structure
 
@@ -33,18 +55,6 @@ app/ # main folder
 ├─ main.py # root file
 └─ README.md # you are here
 ```
-
-## Getting started
-### Clone and install
-```bash
-git clone https://github.com/hamidtheprogrammer/TEAMHUB.git
-cd app
-pip3 install
-python3 main.py
-```
-
-## Environment variables
-port= 
 
 ## Tests
 (Not yet implemented)

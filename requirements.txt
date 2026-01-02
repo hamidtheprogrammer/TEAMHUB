@@ -1,0 +1,10 @@
+fastapi
+sqlalchemy
+psycopg2-binary
+email-validator
+pydantic
+pytest
+httpx
+alembic
+pydantic_settings
+pytest-cov
