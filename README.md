@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/status-work%20in%20progress-yellow)
 ![Version](https://img.shields.io/badge/version-0.1.0--alpha-orange)
 ![Coverage](https://img.shields.io/codecov/c/github/hamidtheprogrammer/REPO)
-![Build](https://github.com/hamidtheprogrammer/REPO/actions/workflows/ci.yml/badge.svg)
+![Build](https://github.com/hamidtheprogrammer/TEAMHUB/actions/workflows/ci.yml/badge.svg)
 
 
 ## Overview

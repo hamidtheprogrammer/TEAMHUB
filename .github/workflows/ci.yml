@@ -48,7 +48,6 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run database migrations
-        working-directory: app
         run: |
           alembic upgrade head
 

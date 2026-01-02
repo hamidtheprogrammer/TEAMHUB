@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 from app.main import app
-from app.repositories.users import delete_user_by_email
+from app.repositories.users import delete_user_by_email, create_user, get_user_by_email
 from app.config.dbConfig import SessionLocal
 
 # use app server
@@ -69,6 +69,11 @@ def test_login_invalid_credentials():
 
 # 3.2 Valid login credentials
 def test_login_valid_credentials():
+    db = SessionLocal()
+    user = get_user_by_email(db, TEST_EXISTING_USER["email"])
+    if not user: 
+        TEST_EXISTING_USER["verifiedToken"] = "utycfregwhubuytvyfctehgv"
+        create_user(db, TEST_EXISTING_USER)
     response = client.post("/auth/login", json=TEST_EXISTING_USER)
     assert response.status_code == 200
 
