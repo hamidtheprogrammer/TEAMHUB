@@ -1,5 +1,5 @@
 from app.repositories import users
-from app.models.users import User
+from app.models.users import User, UserRole
 from datetime import datetime
 import secrets
 
@@ -60,5 +60,13 @@ def change_user_password(db, user_data):
         raise ValueError("User not found")
     message = users.change_user_password(db, user, user_data.password)
     return message
+
+# get all users
+def get_all_users(db, id):
+    user = users.get_user_by_id(db, id)
+    if not user or user.role != UserRole.ADMIN:
+        raise ValueError("Not authorized")
+    return users.get_all_users(db)
+
    
 

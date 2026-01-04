@@ -12,9 +12,9 @@ TeamHub is a backend-only internal SaaS that centralizes team, project, and user
 -	Admin can create and delete projects.
 -	Admin can assign a project to a team.
 ### User management
--	User has access to their team and projects
--	Admin can list, delete, and move users across teams.
+-	Admin can list, delete users.
 ### Team management
+-	User has access to their team and projects
 -	Admin can list, delete, and create teams.
 -	Admin can assign users to teams and assign team leader.
 ### Project management

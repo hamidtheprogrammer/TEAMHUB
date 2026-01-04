@@ -49,6 +49,15 @@ def change_user_password(db:Session, user, newPassword):
     db.refresh(user)
     return {"message":"Password successfully changed"}
 
-
+# Get all users
+def get_all_users(db: Session):
+    return db.query(User)
+   
+# Delete user by id
+def delete_user_by_id(db: Session, id:int):
+    user = db.query(User).filter(User.id == id).delete()
+    if user:
+        return True
+    return False
 
 
