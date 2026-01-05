@@ -39,8 +39,9 @@ def test_get_users():
 
     assert "access_token" in body
     
+    token = body["access_token"]
     # get users with admin account
-    users_response = client.get("/users", headers={"Authorization":f"Bearer {body["access_token"]}"})
+    users_response = client.get("/users", headers={"Authorization":f"Bearer {token}"})
 
     assert users_response.status_code == 200
 
@@ -66,8 +67,10 @@ def test_delete_user():
 
     assert "access_token" in body
 
+    token = body["access_token"]
+
     # delet user with admin token
-    delete_response = client.delete(f"/users/{new_user.id}", headers={"Authorization":f"Bearer {body["access_token"]}"})
+    delete_response = client.delete(f"/users/{new_user.id}", headers={"Authorization":f"Bearer {token}"})
 
     delete_body = delete_response.json()
 
