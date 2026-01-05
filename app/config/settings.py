@@ -8,6 +8,9 @@ class Settings(BaseSettings):
     MAIL_FROM_NAME:str
     FRONTEND_VERIFY_URL:str
     env:str
+    SECRET_KEY:str
+    ALGORITHM: str
+    ACCESS_TOKEN_EXPIRE_MINUTES: int
 
     class Config:
         env_file = ".env"

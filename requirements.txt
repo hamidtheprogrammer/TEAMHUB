@@ -8,3 +8,5 @@ httpx
 alembic
 pydantic_settings
 pytest-cov
+jose
+python-jose

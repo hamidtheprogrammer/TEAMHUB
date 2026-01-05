@@ -36,6 +36,9 @@ jobs:
       MAIL_FROM_NAME: Teamhub
       FRONTEND_VERIFY_URL: http://localhost:3000/auth/verify
       port: 8002
+      SECRET_KEY: super-secret-key
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 60
 
     steps:
       - name: Checkout code

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.config.settings import settings
-from app.api.v1.routes import auth
+from app.api.v1.routes import auth, users
 
 
 
@@ -10,6 +10,7 @@ port = settings.port
 app = FastAPI()
 
 app.include_router(auth.router)
+app.include_router(users.router)
 
 
 #test route

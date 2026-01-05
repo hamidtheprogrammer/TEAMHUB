@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.api.v1.schemas.users import UserCreate, UserResponse, UserResponseDev, UserLogin, UserVerifyToken, SuccessMessage, ResetPassword
+from app.api.v1.schemas.users import UserCreate, UserResponse, UserResponseDev, UserLogin, UserVerifyToken, SuccessMessage, ResetPassword, LoginResponse
 from app.api.v1.services.users import register_user, login_user, verify_user, set_user_password_token, change_user_password
 from app.config.dbConfig import get_db
 from app.config.settings import settings
+
 
 # auth router
 router = APIRouter(prefix="/auth", tags=["Auth"])
@@ -32,7 +33,7 @@ def verify_token(token, user:UserVerifyToken, db:Session = Depends(get_db)):
 
     
 # POST login
-@router.post("/login", response_model=UserResponse)
+@router.post("/login", response_model=LoginResponse)
 def login(User:UserLogin, db:Session = Depends(get_db)):
     try:
         return login_user(db, User)
