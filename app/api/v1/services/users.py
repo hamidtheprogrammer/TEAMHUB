@@ -2,6 +2,7 @@ from app.repositories import users
 from app.models.users import User, UserRole
 from datetime import datetime
 import secrets
+from app.utils.auth import create_access_token
 
 
 # register user business logic
@@ -28,8 +29,9 @@ def login_user(db, user_data):
 
     if not user:
         raise ValueError("Invalid credentials")
-    
-    return user
+    token = create_access_token({"id": str(user.id)})
+
+    return {"user":user, "access_token": token, "token_type": "bearer"}
 
 # verify user
 def verify_user(db, user_data, token):
@@ -62,11 +64,18 @@ def change_user_password(db, user_data):
     return message
 
 # get all users
-def get_all_users(db, id):
-    user = users.get_user_by_id(db, id)
+def get_all_users(db, user):
+    print(user.role)
     if not user or user.role != UserRole.ADMIN:
         raise ValueError("Not authorized")
     return users.get_all_users(db)
+
+# delete a user
+def delete_user(db, user, id):
+    if not user or user.role != UserRole.ADMIN:
+        raise ValueError("Not authorized")
+    return users.delete_user_by_id(db, id)
+    
 
    
 

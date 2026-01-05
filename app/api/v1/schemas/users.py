@@ -29,6 +29,13 @@ class UserResponse(BaseModel):
         "from_attributes": True
     }
 
+# login response
+class LoginResponse(BaseModel):
+    user: UserResponse
+    access_token: str
+    token_type: str
+
+
 # user response schema in dev mode
 class UserResponseDev(UserResponse):
         verifiedToken:str

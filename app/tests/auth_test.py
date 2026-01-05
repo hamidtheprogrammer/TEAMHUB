@@ -3,7 +3,7 @@ from fastapi.testclient import TestClient
 from app.main import app
 from app.repositories.users import delete_user_by_email, create_user, get_user_by_email
 from app.config.dbConfig import SessionLocal
-from app.models.users import User
+from app.models.users import User, UserRole
 
 # use app server
 client = TestClient(app)
@@ -35,7 +35,8 @@ def test_register_route_email_exists():
         username=TEST_EXISTING_USER["username"],
         email=TEST_EXISTING_USER["email"],
         hashed_password=(TEST_EXISTING_USER["password"]),
-        verifiedToken= TEST_EXISTING_USER["verifiedToken"]
+        verifiedToken= TEST_EXISTING_USER["verifiedToken"],
+        role = UserRole.ADMIN
         ) 
         create_user(db, user)
     response = client.post("/auth/register", json=TEST_EXISTING_USER)
@@ -86,8 +87,9 @@ def test_login_valid_credentials():
 
     body = response.json()
 
-    assert body["email"] == TEST_EXISTING_USER["email"]
-    assert "id" in body
+    assert "user" in body
+    assert body["user"]["email"] == TEST_EXISTING_USER["email"]
+    
 
 
 # 4 RESET PASSWORD 

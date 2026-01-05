@@ -21,13 +21,16 @@ Creates a new account
 
 ```
 {
+    "user":{
     "id":"uuid",
     "username":"string",
     "email":"string",
     "role":"admin"|"user",
     "verified":bool,
-    "teams":[],
-    
+    "teams":[], },
+    "access_token":str,
+    "token_type":"bearer"
+
 }
 ```
 

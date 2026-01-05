@@ -51,13 +51,15 @@ def change_user_password(db:Session, user, newPassword):
 
 # Get all users
 def get_all_users(db: Session):
-    return db.query(User)
+    return db.query(User).all()
    
 # Delete user by id
 def delete_user_by_id(db: Session, id:int):
-    user = db.query(User).filter(User.id == id).delete()
+    user = db.query(User).filter(User.id == id).first()
     if user:
-        return True
+        db.delete(user)
+        db.commit()
+        return {"id":user.id}
     return False
 
 

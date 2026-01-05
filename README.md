@@ -12,10 +12,12 @@ TeamHub is a minimal backend-only internal SaaS that centralizes team, project, 
 ## Current Features
 - Authentication and authorization (In progress)
 - Email notification - For this project, email sending is intentionally stubbed due to domain verification requirements. In development mode, verification tokens are returned in the API response for testing purposes. In production, this service would integrate with a transactional email provider
+- User management (admin)
 
 ## Planned features (Not yet implemented)
-- Team and project management
-- Admin controls
+- view teams and projects (user)
+- Team management (admin)
+- Project management (admin)
 
 ## Prerequisites
 - Postgresql 
