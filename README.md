@@ -31,7 +31,7 @@ TeamHub is a minimal backend-only internal SaaS that centralizes team, project, 
 ## Getting started
 
 ### Environment variables
-```bash
+```
 port= (add your desired port number e.g 8000)
 DATABASE_URL=(add your postgresql url e.g "postgresql://username@localhost:5432/teamhub")
 MAILERSEND_API_KEY=(your mailer send api key - mail is not functional in this project)
@@ -39,6 +39,9 @@ MAIL_FROM_EMAIL=
 MAIL_FROM_NAME=
 FRONTEND_VERIFY_URL=http://localhost:3000/auth/verify
 env="DEVELOPMENT"
+SECRET_KEY = "super-secret-key"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 60
 ```
 
 ### Clone and install
