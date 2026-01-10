@@ -31,7 +31,7 @@ jobs:
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/teamhub_test
       env: DEVELOPMENT
-      MAILERSEND_API_KEY: mlsn.23485ff8bba779387b4e74e8d6ae972d9874ff5acddc3d89a56611ec8c327117
+      MAILERSEND_API_KEY: mailersendapikey
       MAIL_FROM_EMAIL: test@sandbox.mailersend.net
       MAIL_FROM_NAME: Teamhub
       FRONTEND_VERIFY_URL: http://localhost:3000/auth/verify

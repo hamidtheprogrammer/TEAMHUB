@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.config.settings import settings
-from app.api.v1.routes import auth, users
+from app.api.v1.routes import auth, users, teams
 
 
 
@@ -11,6 +11,7 @@ app = FastAPI()
 
 app.include_router(auth.router)
 app.include_router(users.router)
+app.include_router(teams.router)
 
 
 #test route
